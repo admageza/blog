@@ -1,0 +1,26 @@
+
+<center><h1>Article's List</h1>
+
+<button type="button" class="btn btn-outline-primary"><%= link_to 'New article', new_article_path %></button>
+
+ <button type="button" class="btn btn-outline-primary"><%= link_to 'Home Page', controller: 'welcome' %></button>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Show', article_path(article) %></button></td>
+      <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Edit', edit_article_path(article) %></button></td>
+      <td><button type="button" class="btn btn-outline-primary"><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure, you want to delete this?' } %></button></td>
+    </tr>
+  <% end %>
+</table>
+</center>
