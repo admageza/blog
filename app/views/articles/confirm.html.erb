@@ -1,0 +1,18 @@
+<h3>Send it with the following contents.</h3>
+
+<%= form_with(model: @article, url: articles_url, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :text %>
+
+  <p>Title:<%= @article.title %></p>
+  <p>Body:<%= @article.text %></p>
+  <%= form.submit  "submit" %>
+<% end %>
+
+<%= form_with(model: @article, url: new_article_url, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :text %>
+  <%= form.submit "back", name: 'back' %>
+<% end %>
+
+<button type="button" class="btn btn-outline-primary"><%= link_to 'Back', articles_path %></button>

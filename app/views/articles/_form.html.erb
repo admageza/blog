@@ -1,4 +1,4 @@
-<center><%= form_with model: @article, local: true do |form| %>
+<center><%= form_with (model: @article, local: true, if action_name == 'new' url: choose_new_or_edit else blog_path end) do |form| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation">

@@ -3,12 +3,28 @@
   <head>
     <title>Blog</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    
+   <header class="header">
+    <ul >
+      <li ><%= link_to 'Home', controller: 'welcome' %></li>
+      <li ><%= link_to 'Open Articles', controller: 'articles' %></li>
+      <li ><%= link_to 'Create Article', new_article_url %></li>
+    </ul>
+  </header>
+  
     <%= yield %>
+    
+    <footer>
+    <p>TwitterClone Application</p>
+    <p>© 2018 Copyright MAGEZA Adolphe.</p>
+  </footer>
+  
   </body>
 </html>
