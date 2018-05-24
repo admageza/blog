@@ -3,7 +3,8 @@
   <head>
     <title>Saint Dominic School Kagugu</title>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +13,6 @@
   <body>
 <div class="container-fluid"> 
   <header class="header">
-     
 <nav class="navbar navbar-expand-lg">
  <div class="navbar-header">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +36,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#"><%= link_to 'New article', new_article_path %></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"><%= link_to "Login", new_session_path %></a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -45,8 +48,21 @@
   </nav>
  </header>
 </div>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    
+    <% if logged_in? %>
+     <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+    <% else %>
+    　<%= link_to "", new_user_path %>
+      <%= link_to "", new_session_path %>
+    <% end %>
   
     <%= yield %>
+    
     
     <footer>
   <nav class="row">
