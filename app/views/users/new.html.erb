@@ -12,17 +12,22 @@
 <% end %>
 
 <%= form_with(model: @user, local: true) do |f| %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create account" %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.label :name, class: 'label' %>
+  <%= f.text_field :name, class: 'type' %>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.label :email, class: 'label' %>
+  <%= f.email_field :email, class: 'type' %>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= f.label :password, class: 'label' %>
+  <%= f.password_field :password, class: 'type' %>
+<br>
+  <%= f.label :password_confirmation, class: 'label' %>
+  <%= f.password_field :password_confirmation, class: 'type' %>
+<br>
+  <%= f.submit "Create account", class: 'button' %>
 <% end %>
+<br>
+<h5>Do you have account, <%= link_to "Login", new_session_path %> here!</h5>

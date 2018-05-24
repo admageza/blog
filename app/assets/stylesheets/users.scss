@@ -1,3 +1,31 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Full-width input fields */
+.type {
+    width: 40%;
+    margin: 8px 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+     position: auto;
+}
+
+/* lebel */
+.lebel {
+    display: block;
+    width: 30%;
+    margin: auto;
+    position: auto;
+}
+
+/* Set a style for all buttons */
+.button {
+    background-color: #4169E1;
+    color: white;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    text-align: auto;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
