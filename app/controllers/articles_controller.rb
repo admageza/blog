@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
+   @favorite = current_user.favorites.find_by(article_id: @article.id)
   end
   
   def new
@@ -31,6 +32,7 @@ class ArticlesController < ApplicationController
 
 def create
   @article = Article.new(article_params)
+  @article.user = current_user
  
   if @article.save
     redirect_to articles_url, notice: "You have successfull created new Article!"
@@ -67,4 +69,9 @@ private
       redirect_to new_session_path # halts request cycle
     end
   end
+  
+   def authenticate_user
+      @article = current_user.articles.find_by(id: params[:id])
+      redirect_to root_url if @article.nil?
+    end
 end
