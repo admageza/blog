@@ -14,11 +14,11 @@
 <h2>Add comment:</h2>
 <%= render 'comments/form' %>
 
-<% unless @article.user == current_user %>
+<% unless @article.user==current_user %>
   <% if @favorite.present? %>
-    <%= link_to 'Unlike',favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to 'Unfavorite',favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger' %>
   <% else %>
-    <%= link_to 'Like',favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
+    <%= link_to 'Favorite',favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
 

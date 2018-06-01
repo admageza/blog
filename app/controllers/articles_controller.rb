@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :show]
   
-   http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
+  # http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
   
   def index
     @articles = Article.all
@@ -32,7 +32,8 @@ class ArticlesController < ApplicationController
 
 def create
   @article = Article.new(article_params)
-  @article.user = current_user
+  # @article.user = current_user
+  
  
   if @article.save
     redirect_to articles_url, notice: "You have successfull created new Article!"
@@ -69,9 +70,4 @@ private
       redirect_to new_session_path # halts request cycle
     end
   end
-  
-   def authenticate_user
-      @article = current_user.articles.find_by(id: params[:id])
-      redirect_to root_url if @article.nil?
-    end
 end

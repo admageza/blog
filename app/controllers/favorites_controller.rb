@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_with_http_digest
 
   def create
     favorite = current_user.favorites.create(article_id: params[:article_id])
