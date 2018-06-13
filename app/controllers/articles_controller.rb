@@ -2,11 +2,7 @@ class ArticlesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :show]
   before_action :correct_user,   only: [:edit, :delete]
   
-<<<<<<< HEAD
   http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
-=======
-  # http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
->>>>>>> 297e12387328d626196bf50becc9f2a32b0690ed
   
   def index
     @articles = Article.all
@@ -15,11 +11,8 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
-<<<<<<< HEAD
     @favorite = current_user.favorites.find_by(article_id: @article.id)
-=======
    @favorite = current_user.favorites.find_by(article_id: @article.id)
->>>>>>> 297e12387328d626196bf50becc9f2a32b0690ed
   end
   
   def new
@@ -41,12 +34,7 @@ class ArticlesController < ApplicationController
 
 def create
   @article = Article.new(article_params)
-<<<<<<< HEAD
   @article.user = current_user
-=======
-  # @article.user = current_user
->>>>>>> 297e12387328d626196bf50becc9f2a32b0690ed
-  
  
   if @article.save
     redirect_to articles_url, notice: "You have successfull created new Article!"
