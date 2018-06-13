@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   
-=======
->>>>>>> 297e12387328d626196bf50becc9f2a32b0690ed
   get 'favorites/new'
   get 'sessions/new'
 
