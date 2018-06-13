@@ -14,6 +14,14 @@
 <h2>Add comment:</h2>
 <%= render 'comments/form' %>
 
+<% unless @article.user==current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'unfavorites', favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'favorite', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Edit', edit_article_path(@article) %></button>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Back', articles_path %></button>

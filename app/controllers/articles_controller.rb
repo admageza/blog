@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :show]
+  before_action :correct_user,   only: [:edit, :delete]
   
-   http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
+  http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
   
   def index
     @articles = Article.all
@@ -10,6 +11,7 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
+    @favorite = current_user.favorites.find_by(article_id: @article.id)
   end
   
   def new
@@ -31,6 +33,8 @@ class ArticlesController < ApplicationController
 
 def create
   @article = Article.new(article_params)
+  @article.user = current_user
+  
  
   if @article.save
     redirect_to articles_url, notice: "You have successfull created new Article!"
@@ -64,7 +68,14 @@ private
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"
-      redirect_to new_session_path # halts request cycle
+      redirect_to new_session_path 
+    end
+  end
+  
+  def correct_user
+    unless @user == current_user
+     flash[:error] = "You don't have permission to delete or edit this article"
+      redirect_to(root_url) 
     end
   end
 end

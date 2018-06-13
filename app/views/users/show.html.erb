@@ -3,3 +3,39 @@
 <h3>This is &nbsp;<%= @user.name %>'s page</h3>
 
 <p>email address: <%= @user.email %></p>
+
+<center><h1>Favorite's List</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ <% @favorites_articles.each do |favorites| %>
+    <tr>
+      <td><%= @favorites_articles = @user.favorites %></td>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <% @user ||= current_user %>
+    <div class="stats">
+      <th><a href="<%= favorite_path(@user) %>">
+        <strong id="following" class="stat">
+          <%= @user.favorites.count %>
+        </strong>
+        following
+      </a></th>
+   
+      <th><a href="<%= user_path(@user.id) %>">
+        <strong id="followers" class="stat">
+          <%= @user.favorites.count %>
+        </strong>
+        followers
+      </a>
+      </th>
+    </div>
+</table>
+</center>
