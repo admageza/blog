@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :show]
   before_action :correct_user,   only: [:edit, :delete]
   
-  http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
+  # http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
   
   def index
     @articles = Article.all
