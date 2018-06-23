@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :contacts
+  resources :feeds
   get 'favorites/new'
   get 'sessions/new'
 
@@ -13,6 +15,10 @@ Rails.application.routes.draw do
       post :confirm
     end
     end
+  end
+  
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
   
   root 'welcome#index'

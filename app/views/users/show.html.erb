@@ -1,8 +1,8 @@
 
-<br><h1>Welcome, <%= @user.name %></h1>
-<h3>This is &nbsp;<%= @user.name %>'s page</h3>
+<br><h1>Welcome, <%= current_user.name %></h1>
+<h3>This is &nbsp;<%= current_user.name %>'s page</h3>
 
-<p>email address: <%= @user.email %></p>
+<p>email address: <%= current_user.email %></p>
 
 <center><h1>Favorite's List</h1>
 
@@ -10,25 +10,18 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
-    <th></th>
   </tr>
- <% @favorites_articles.each do |favorites| %>
-    <tr>
-      <td><%= @favorites_articles = @user.favorites %></td>
-    </tr>
+  <tr>
+    <% @favorites_articles.each do |article| %>
+    <td><%= article.title %></td>
+    <td><%= article.text %></td>
+  </tr>
   <% end %>
 </table>
 
 <table>
   <% @user ||= current_user %>
     <div class="stats">
-      <th><a href="<%= favorite_path(@user) %>">
-        <strong id="following" class="stat">
-          <%= @user.favorites.count %>
-        </strong>
-        following
-      </a></th>
-   
       <th><a href="<%= user_path(@user.id) %>">
         <strong id="followers" class="stat">
           <%= @user.favorites.count %>
@@ -39,3 +32,4 @@
     </div>
 </table>
 </center>
+
