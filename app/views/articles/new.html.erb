@@ -26,7 +26,12 @@
     <%= form.label :text %><br>
     <%= form.text_area :text %>
   </p>
-  <!--<button type="button" class="btn btn-outline-primary"><%= link_to 'Add picture', new_feed_path %></button>-->
+  <!--<div class="field">-->
+  <!--  <%= form.label :image %>-->
+  <!-- <%= form.file_field :image, id: :feed_image %>-->
+  <!--  <%= form.hidden_field :image_cache %>-->
+  <!--</div>-->
+
  
   <p>
     <%= form.submit "submit" %>
