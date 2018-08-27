@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :require_login, only: [:new, :edit, :show]
-  before_action :correct_user,   only: [:edit, :delete]
+  before_action :correct_user,   only: [ :delete]
   
   # http_basic_authenticate_with name: "mageza", password: "adolphe", except: [:index, :show]
   
@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @favorite = current_user.favorites.find_by(article_id: @article.id)
+   
   end
   
   def new
@@ -35,6 +36,8 @@ def create
   @article.user = current_user
  
   if @article.save
+    ContactMailer.contact_mail2(current_user.email).deliver
+    # ContactMailer.contact_mail(current_user.email).deliver
     redirect_to articles_url, notice: "You have successfull created new Article!"
   else
     render 'new'
@@ -60,7 +63,7 @@ end
  
 private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :image)
   end
   
   def require_login

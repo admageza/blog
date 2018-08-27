@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'welcome/index'
+    resources :articles do
+    resources :feeds
+    end
     resources :favorites, only: [:create, :destroy]
     resources :sessions, only: [:new, :create, :destroy]
     resources :users

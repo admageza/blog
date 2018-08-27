@@ -24,6 +24,7 @@ class FeedsController < ApplicationController
   # POST /feeds
   # POST /feeds.json
   def create
+    # @article = Article.find(params[:article_id])
     @feed = Feed.new(feed_params)
 
     respond_to do |format|

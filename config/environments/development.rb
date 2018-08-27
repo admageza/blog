@@ -53,13 +53,12 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.action_mailer.default_url_options = { host: 'mageza-admageza.c9users.io/'}
-  config.action_mailer.delivery_method = :smtp
   
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
    {
      address: "smtp.SendGrid.net",
-     port: 587,
+     port: 2525,
      authentication: :plain,
      user_name: ENV['SENDGRID_USERNAME'],
      password: ENV['SENDGRID_PASSWORD'],
