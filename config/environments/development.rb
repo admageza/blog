@@ -53,6 +53,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.action_mailer.default_url_options = { host: 'mageza-admageza.c9users.io/'}
+<<<<<<< HEAD
+=======
+  config.action_mailer.delivery_method = :letter_opener
+>>>>>>> 001d4e9d9f529e02d44a0890b2bcfe735ade70e8
   
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =

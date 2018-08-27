@@ -36,8 +36,12 @@ def create
   @article.user = current_user
  
   if @article.save
+<<<<<<< HEAD
     ContactMailer.contact_mail2(current_user.email).deliver
     # ContactMailer.contact_mail(current_user.email).deliver
+=======
+     ContactMailer.contact_mail2(current_user.email).deliver
+>>>>>>> 001d4e9d9f529e02d44a0890b2bcfe735ade70e8
     redirect_to articles_url, notice: "You have successfull created new Article!"
   else
     render 'new'
