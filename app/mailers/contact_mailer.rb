@@ -7,7 +7,6 @@ class ContactMailer < ApplicationMailer
   
   
    def contact_mail2(emailu)
-     @article = emailu
 
     mail to: emailu, subject: "confirmation  of new article"
    end
