@@ -58,11 +58,22 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
    {
+     user_name: ENV['SENDGRID_USERNAME'],
+     password: ENV['SENDGRID_PASSWORD'],
+     domain: "example.com",
      address: "smtp.SendGrid.net",
      port: 2525,
      authentication: :plain,
-     user_name: ENV['SENDGRID_USERNAME'],
-     password: ENV['SENDGRID_PASSWORD'],
      enable_starttls_auto: true,
    }
+end
+
+LetterOpener.configure do |config|
+  # To overrider the location for message storage.
+  # Default value is <tt>tmp/letter_opener</tt>
+  config.location = Rails.root.join('tmp', 'my_mails')
+
+  # To render only the message body, without any metadata or extra containers or styling.
+  # Default value is <tt>:default</tt> that renders styled message with showing useful metadata.
+  config.message_template = :light
 end

@@ -25,9 +25,10 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    
     respond_to do |format|
       if @contact.save
-        ContactMailer.contact_mail(@contact).deliver
+        # ContactMailer.contact_mail(@contact).deliver
         ContactMailer.contact_mail2(current_user.email).deliver
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
