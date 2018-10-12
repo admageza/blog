@@ -15,11 +15,16 @@
       </ul>
     </div>
   <% end %>
- 
-  <p>
+   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>
+ 
+  <div class="field">
+    <%= form.label :image %>
+   <%= form.file_field :image, id: :feed_image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
  
   <p>
     <%= form.label :text %><br>
