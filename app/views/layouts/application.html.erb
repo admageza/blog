@@ -25,12 +25,16 @@
   </button>
     
     <li class="nav-item">
-        <% if logged_in? %>
-        <a class="nav-link" href="#"><%= link_to "Profile", user_path(current_user.id) %></a>
-      <% else %>
+      <!--added but can be removed if not necessary from here to-->
+      <% @user ||= current_user %>
+      <!-- here and uncote others-->
+        <!--<% if logged_in? %>-->
+        <a class="nav-link" href="#"><%= link_to image_tag @user.image_url, :class => "profilelogo" %><%= link_to "", user_path(current_user.id) %></a>
+        <!--<a class="nav-link" href="#"><%= link_to "profile", user_path(current_user.id) %></a>-->
+      <!--<% else %>-->
     　<%= link_to "", new_user_path %>
       <%= link_to "", new_session_path %>
-    <% end %>
+    <!--<% end %>-->
       </li>
  </div>
   <div class="collapse navbar-collapse" id="navbarNav">
