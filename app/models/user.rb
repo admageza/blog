@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :articles
   has_many :articles, foreign_key: "provider_id"
-  has_many :articles, through: :favorites, source: :user
+  has_many :articles, source: :user
+  # has_many :articles, through: :favorites, source: :user
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
    mount_uploader :image, ImageUploader

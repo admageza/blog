@@ -1,37 +1,101 @@
-<p>
-  <%= image_tag @user.image_url, :class => "imgsize" %>
- </p>
-<br><h1>Welcome, <%= current_user.name %></h1>
-<h3>This is &nbsp;<%= current_user.name %>'s page</h3>
-
-<p>email address: <%= current_user.email %></p>
-
-<center><h1>Favorite's List</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-  <tr>
-    <% @favorites_articles.each do |article| %>
-    <td><%= article.title %></td>
-    <td><%= article.text %></td>
-  </tr>
-  <% end %>
-</table>
-
-<table>
-  <% @user ||= current_user %>
-    <div class="stats">
-      <th><a href="<%= user_path(@user.id) %>">
-        <strong id="followers" class="stat">
-          <%= @user.favorites.count %>
-        </strong>
-        followers
-      </a>
-      </th>
+<div class="container-fluid" style="margin-top:30px">
+  <div class="row">
+    <div class="col-sm-4">
+      <%= image_tag @user.image_url, :class => "imgsize" %>
     </div>
-</table>
-</center>
+    <div class="col-sm-4">
+      <center><br><h1>Welcome, <%= current_user.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-primary"><%= link_to 'Edit Profile', user_path(current_user.id) %></button></h1>
+          <h3>This is &nbsp;<%= current_user.name %>'s page</h3>
+          <p>email address: <%= current_user.email %></p>
+          <table>
+            <% @user ||= current_user %>
+          <div class="stats">
+            <th><a href="<%= user_path(@user.id) %>">
+              <strong id="followers" class="stat">
+                <%= @user.articles.count %>
+              </strong>
+                articles
+               </a>
+            </th>
+          </div>
+          </table>
+          
+          <table>
+            <% @user ||= current_user %>
+          <div class="stats">
+            <th><a href="<%= user_path(@user.id) %>">
+              <strong id="followers" class="stat">
+                <%= @user.favorites.count %>
+              </strong>
+                followers
+               </a>
+            </th>
+          </div>
+          </table>
+        </center>
+    </div>
+  </div>
+</div>
 
+  <nav class="row" style="margin-top:40px">
+    <div class="col-md-12">
+     <a class="col-1" href="#POSTS"><%= link_to "My POSTS", user_path(current_user.id), class:'menu' %></a>
+     <a class="col-1" href="#FAVORITE"><%= link_to "FAVORITE",user_path(current_user.id), class:'menu' %></a>
+     <a class="col-1" href="#"><%= link_to "NEW POST", new_article_path, class:'menu' %></a>
+     <a class="col-1" href="#"><%= link_to "TAGGED", session_path(current_user.id), method: :delete, class:'menu' %></a>
+    </div>
+  </nav>
+
+<!-- Container (Services Section) -->
+<div id="services" class="container-fluid text-left" style="margin-top:30px">
+  <div class="row slideanim">
+    <% @user.articles.each do |article| %>
+      <div class="col-sm-12 ">
+       <%= image_tag @articles.image_url, :class => "logo" %>
+       <%= article.title %>
+       <%= article.text %>
+      </div>
+    <% end %>
+    
+  <!--  <div class="col-sm-4">-->
+  <!--    <span class="glyphicon glyphicon-heart logo-small"></span>-->
+  <!--    <h4>LOVE</h4>-->
+  <!--    <p>Lorem ipsum dolor sit amet..</p>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--    <span class="glyphicon glyphicon-lock logo-small"></span>-->
+  <!--    <h4>JOB DONE</h4>-->
+  <!--    <p>Lorem ipsum dolor sit amet..</p>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--<br><br>-->
+  <!--<div class="row slideanim">-->
+  <!--  <div class="col-sm-4">-->
+  <!--    <span class="glyphicon glyphicon-leaf logo-small"></span>-->
+  <!--    <h4>GREEN</h4>-->
+  <!--    <p>Lorem ipsum dolor sit amet..</p>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--    <span class="glyphicon glyphicon-certificate logo-small"></span>-->
+  <!--    <h4>CERTIFIED</h4>-->
+  <!--    <p>Lorem ipsum dolor sit amet..</p>-->
+  <!--  </div>-->
+  <!--  <div class="col-sm-4">-->
+  <!--    <span class="glyphicon glyphicon-wrench logo-small"></span>-->
+  <!--    <h4 style="color:#303030;">HARD WORK</h4>-->
+  <!--    <p>Lorem ipsum dolor sit amet..</p>-->
+  <!--  </div>-->
+  </div>
+</div>
+
+<div id="FAVORITE" class="container-fluid text-center" style="margin-top:10px">
+<div class="row slideanim">
+  <% @favorites_articles.each do |article| %>
+   <div class="col-sm-4 "> 
+    <%= image_tag @articles.image_url, :class => "logo" %>
+    <%= article.title %>
+    <%= article.text %>
+   </div>
+  <% end %>
+</div>
+</div>

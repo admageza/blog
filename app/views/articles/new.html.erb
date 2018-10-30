@@ -1,4 +1,4 @@
-<h1><strong>Create new article</strong></h1>
+<center><h1><strong>Create new Post</strong></h1>
 <p><%= notice %></p>
 
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
@@ -28,11 +28,11 @@
     <%= form.label :text %><br>
     <%= form.text_area :text %>
   </p>
-  <div class="field">
+  <p>
     <%= form.label :image %>
    <%= form.file_field :image, id: :feed_image %>
     <%= form.hidden_field :image_cache %>
-  </div>
+  </p>
 
  
   <p>
@@ -45,3 +45,4 @@
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Back', articles_path %></button>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Home Page', controller: 'welcome' %></button>
+</center>

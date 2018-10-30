@@ -1,13 +1,25 @@
 class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :delete]
+  
+  def index
+    @user = User.all
+  end
+  
   def show
     @user = User.find(params[:id])
     # @favorites_articles = @user.favorites
      @favorites_articles = current_user.favorite_articles
+     @articles = current_user.articles
+     
+     @articles = User.find(params[:id])
   end
   
   def new
     @user = User.new
+  end
+  
+  def edit
+   @user = User.find(params[:id])
   end
   
   def create

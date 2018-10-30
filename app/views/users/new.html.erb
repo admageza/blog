@@ -1,3 +1,14 @@
+<div class="container-fluid">
+ <div>
+       <img src="/SAM_6233.JPG" class="img-responsive" alt="Dominic">
+       
+<div class="signup">
+  <div class="hero-text">
+    <!--<h1>Saint Dominic School Kagugu</h1>-->
+    <!--<h4><strong>"Conscious, Solidarity and Excellence" is our MOTTO </strong></h4>-->
+    <!--<h6><strong>You are Most Welcome!</strong></h6>-->
+     <h1>InstagramClone Application</h1>
+    
 <h1>Sign up</h1>
 
 <% if @user.errors.any? %>
@@ -13,25 +24,38 @@
 
 <%= form_with(model: @user, local: true) do |f| %>  
 <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :image, class: 'image' %>
+    <%= f.file_field :image, class: 'image' %>
   </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.label :name, class: 'label' %>
   <%= f.text_field :name, class: 'type' %>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.label :email, class: 'label' %>
   <%= f.email_field :email, class: 'type' %>
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <%= f.label :password, class: 'label' %>
   <%= f.password_field :password, class: 'type' %>
 <br>
+
   <%= f.label :password_confirmation, class: 'label' %>
   <%= f.password_field :password_confirmation, class: 'type' %>
 <br>
   <%= f.submit "Create account", class: 'button' %>
 <% end %>
 <br>
-<h5>Do you have account, <%= link_to "Login", new_session_path %> here!</h5>
+<h3>Do you have account, <%= link_to "Login", new_session_path, class:'sign' %> here!</h3>
+
+
+    <!--<div class="row">-->
+    <!--    <button type="button" class="btn btn-outline-primary">WELCOME MESSAGE</button>-->
+    <!--    <button type="button" class="btn btn-outline-primary"><%= link_to 'HOME', controller: 'welcome' %></button>-->
+    <!--    <button type="button" class="btn btn-outline-primary"><%= link_to 'READ ARTICLES', controller: 'articles' %></button>-->
+    <!--    <button type="button" class="btn btn-outline-primary"><%= link_to 'NEW ARTICLE', new_article_path %></button>-->
+    <!--</div>-->
+    <!--<h5>You can create, read and add comments on this website!</h5>-->
+  </div>
+</div>
+</div>
