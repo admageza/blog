@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @favorite = current_user.favorites.find_by(article_id: @article.id)
+    @articles = current_user.articles
+    
   end
   
   def new

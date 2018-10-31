@@ -1,12 +1,18 @@
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+   <%= @article.title %>
 </p>
 
 <p>
   <%= image_tag @article.image_url, :class => "logo" %>
  </p>
- 
+ <% unless @article.user==current_user.id %>
+  <% if @favorite.present? %>
+    <%= link_to 'Unfavorite',favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'Favorite',favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
+
+  <% end %>
+<% end %>
 <p>
   <strong>Text:</strong>
   <%= @article.text %>
@@ -18,17 +24,9 @@
 <h2>Add comment:</h2>
 <%= render 'comments/form' %>
 
-<% unless @article.user==current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'Unfavorite',favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'Favorite',favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
-
-  <% end %>
-<% end %>
-
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Edit', edit_article_path(@article) %></button>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Back', articles_path %></button>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to 'Home Page', controller: 'welcome' %></button>
+

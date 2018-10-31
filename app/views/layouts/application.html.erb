@@ -8,53 +8,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  
   
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    <style>
- 
-  </style>
-  </head>
+</head>
 
-  <body >
-<div class="container-fluid text-center">
+<body>
+<div class="container-fluid">
   <% if logged_in? %> 
   <header class="header">
 <nav class="row navbar navbar-expand-lg">
- <div class="col-sm-0 navbar-header ">
+ <div class="col-sm-1 navbar-header ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="sr-only"><%= link_to 'logo-home', controller: 'welcome' %></span>
+    <span class="sr-only"><%= link_to 'Home', controller: 'welcome' %></span>
     <span class="navbar-toggler-icon"></span>
   </button>
  </div>
  
-  <div class="col-sm-12 collapse navbar-collapse" id="navbarNav">
-    <a class=" col-sm-3 nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true" style="font-size:40px;color:white;">Instagram</i></a>
-     <form class="col-sm-3 form-inline my-2 my-lg-0">
-       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-    </form>
-    
-    <% @user ||= current_user %>
-  
-      <a class="col-sm-0 nav-link" href="#"><%= link_to "Home", root_path, class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#New Post"><%= link_to "Profile", user_path(current_user.id), class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#New Post"><%= link_to "New Post", new_article_path, class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#New Post"><%= link_to "All Posts", articles_path, class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#"><%= link_to "Login", new_session_path, class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#"><%= link_to "Logout", session_path(current_user.id), method: :delete, class:'menu' %></a>
-      <a class="col-sm-0 nav-link" href="#"><%= link_to image_tag @user.image_url, :class => "profilelogo" %><%= link_to "", user_path(current_user.id), class:'menu' %></a>
-    
+  <div class="col-sm-2 collapse navbar-collapse text-left" id="navbarNav">
+    <a class="nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true" style="font-size:30px;color:white;">Instagram</i></a>
   </div>
+  <div class="col-sm-3 collapse navbar-collapse" id="navbarNav">
+    <form class="form-inline">
+      <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success " type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+  </div>
+  <div class="collapse navbar-collapse text-left">
+    <ul class="row">
+    <% @user ||= current_user %>
+    
+      <li><a class="col-sm-1 nav-link" href="#"><%= link_to "Home", root_path, class:'menu' %></a></li>
+      <li><a class="col-sm-1 nav-link" href="#"><%= link_to "Profile", user_path(current_user.id), class:'menu' %></a></li>
+      <li><a class="col-sm-2 nav-link" href="#"><%= link_to "All Posts", articles_path, class:'menu' %></a></li>
+      <li><a class="col-sm-2 nav-link" href="#"><%= link_to "New Post", new_article_path, class:'menu' %></a></li>
+      <li><a class="col-sm-1 nav-link" href="#"><%= link_to "Login", new_session_path, class:'menu' %></a></li>
+      <li><a class="col-sm-1 nav-link" href="#"><%= link_to "Logout", session_path(current_user.id), method: :delete, class:'menu' %></a></li>
+      <li><a class="col-sm-1 nav-link" href="#"><%= link_to image_tag @user.image_url, :class => "profilelogo" %><%= link_to "", user_path(current_user.id), class:'menu' %></a></li>
+    
+    <% end %>
+    </ul>
+    </div>
  </nav>
 </header>
-<% end %>
-</div>
 
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
@@ -124,5 +126,6 @@ $(document).ready(function(){
   });
 })
 </script>
-  </body>
+ </div>
+</body>
 </html>
