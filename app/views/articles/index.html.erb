@@ -4,7 +4,11 @@
  <div id="services" class="container-fluid text-center" style="margin-top:30px">
   <div class="row slideanim">
   <% @articles.each do |article| %>
-    <div class="col-sm-12 ">
+    <div class="article col-sm-12 ">
+     <%= image_tag(article.user.image_url, :class => "user") %>
+      <%= article.user.name %>
+      <br>
+      <br>
     <ur>
       <li><%= image_tag(article.image_url, :class => "imgsize") %></li>
       <li><%= article.title %></li>
@@ -19,6 +23,8 @@
               data: { confirm: 'Are you sure, you want to delete this?' } %></button>
               <% end %>
        <% end %>
+       <br>
+      <br>
       <% end %>
     </div>
    </div>

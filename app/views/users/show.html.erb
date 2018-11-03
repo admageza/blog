@@ -69,6 +69,8 @@
       <div class="row slideanim">
   <% @favorites_articles.each do |article| %>
    <div class="col-sm-4 "> 
+   <%= image_tag(article.user.image_url, :class => "user") %>
+    <%= article.user.name %>
     <ur>
        <li><%= image_tag @articles.image_url, :class => "logo" %></li>
        <li><%= article.title %></li>
